@@ -128,7 +128,7 @@ artifactId	- ditt projektnamn. Ex: order-service eller order.service
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang.version}4</version>
+			<version>${commons.lang.version}</version>
 		</dependency>
 
 	</dependencies>
