@@ -1,0 +1,4 @@
+Dag 1
+
+Läsning: Kapitel 2 i boken Pro JPA 2 second edition
+En annan bra resurs är http://www.vogella.com/tutorials/JavaPersistenceAPI/article.html
