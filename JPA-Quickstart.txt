@@ -1,0 +1,143 @@
+<! -------- JPA - Quickstart -------- !>
+
+1) Skapa följande mappstruktur och filer
+
+	ditt-projektnamn		
+		pom.xml (fil)
+
+		src (map)
+			main (map)
+				java (map)
+		
+				resources (map)
+					META-INF (map)
+						persistence.xml (fil)
+
+	Exempel:
+
+	jpa-starter
+		├── pom.xml
+		└── src
+		    └── main
+		        ├── java
+		        └── resources
+		            └── META-INF
+		                └── persistence.xml
+
+2) Lägg till följande i persistence.xml
+
+	Notera! Ändra värdena för property:
+
+	javax.persistence.jdbc.url		- url:en till din databas. Ex: jdbc:mysql://localhost:3306/orderservice
+	javax.persistence.jdbc.user 	- din användare i databasen
+	javax.persistence.jdbc.password	- din användares lösenord
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="PersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa-demo?useSSL=false" />
+			<property name="javax.persistence.jdbc.user" value="your-username" />
+			<property name="javax.persistence.jdbc.password" value="your-password" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
+			<!-- Possible values: none, drop-and-create, create, drop See: https://docs.oracle.com/javaee/7/tutorial/persistence-intro005.htm -->
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+
+			<!-- Configuring Connection Pool -->
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="500" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="2000" />
+
+		</properties>
+	</persistence-unit>
+
+</persistence>
+
+3) Lägg till följande till din pom.xml
+
+Notera! Ändra följande:
+groupId 	- ditt företags reverse domain name (ex. se.coredev)
+artifactId	- ditt projektnamn. Ex: order-service eller order.service
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>se.coredev</groupId>
+	<artifactId>jpa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hibernate.version>5.2.3.Final</hibernate.version>
+		<mysql.version>5.1.40</mysql.version>
+		<commons.lang.version>3.4</commons.lang.version>
+	</properties>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang.version}4</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
+
+
+4) Öppna Eclipse och välj: 
+
+	File - Import - Existing Project into Workspace
+
+	Navigera dig fram till mappen för ditt nya projekt och välj Open - Finish
