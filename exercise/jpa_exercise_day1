@@ -1,0 +1,19 @@
+# Övning - få exemplet att fungera 
+		
+Skapa klassen User och gör den till en Entity. Den ska ha följande properties:
+
+	- id 		: Long 	 : primary key
+	- firstName 	: String : not null
+	- lastName  	: String : not null
+	- username 	: String : not null
+	- password 	: String : null
+
+Det ska gå att ändra förnamn och efternamn.
+
+Skapa en UserRepository som använder sig av JPA för att kunna:
+
+	- Spara en User
+	- Hämta en User med ett visst Id
+	- Hämta alla sparade User
+	- Uppdatera förnamn och efternamn för en User
+
