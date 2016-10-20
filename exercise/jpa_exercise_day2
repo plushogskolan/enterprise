@@ -15,8 +15,8 @@ Employee
 - Department 	 	 : En Employee ska kunna tillhöra en Department	
 	- ParkingSpot	 : En Employee ska kunna ha en ParkingSpot
 	
-ParkingSpace
-	- id 		: Long   : not null
+ParkingSpot
+	- id 		: Long   : primary key 
 	- label 	: String : not null
 
 Mappa upp detta så att det går att spara m.h.a. JPA.
