@@ -18,7 +18,7 @@
 
 			<!-- Possible values: none, drop-and-create, create, drop See: https://docs.oracle.com/javaee/7/tutorial/persistence-intro005.htm -->
 			<property name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
+				value="none" />
 
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />

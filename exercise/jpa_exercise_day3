@@ -1,0 +1,5 @@
+ Övning:
+ Fundera på var ni skulle kunna implementera Embeddable, Join Fetch och Cascade i den övning 
+ som ni fick förra veckan. Exempelvis skulle en Department kunna spara de Employee:s som inte 
+ är sparade när den själv sparas. Department skulle också kunna hämta de Employee:s som tillhör 
+ Department när man hämtar en Department.
