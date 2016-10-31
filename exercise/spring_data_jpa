@@ -1,0 +1,6 @@
+Övning - Spring Data JPA
+
+Strukturera ditt projekt så att infrastruktur hamnar i en config-fil. 
+Skapa sedan de service-klasser som "gömmer" dina repositories. 
+Dessa Service-klasser ska sedan ligga i sin egen config-fil eller vara annoterade med @Service (då behövs ingen separat fil)
+Exempel på service-klass är EmployeeService som har ett beroende på EmployeeRepository (se dagens kod som finns på github).
